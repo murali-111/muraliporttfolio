@@ -1,0 +1,102 @@
+/* ===== Certifications Section ===== */
+
+#certifications {
+    padding: 80px 20px;
+    background: #f4f6f9;
+}
+
+.dark #certifications {
+    background: #111827;
+}
+
+.cert-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.cert-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #222;
+}
+
+.dark .cert-title {
+    color: #ffffff;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Card Styling */
+
+.cert-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+}
+
+.dark .cert-card {
+    background: #1f2937;
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Content */
+
+.cert-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cert-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.cert-info h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #222;
+}
+
+.dark .cert-info h3 {
+    color: #ffffff;
+}
+
+.cert-info p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.dark .cert-info p {
+    color: #cbd5e1;
+}
+
+/* Credential Button */
+
+.cert-btn {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.cert-btn:hover {
+    text-decoration: underline;
+}

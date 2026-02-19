@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murali Sai | Portfolio</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { darkMode: 'class' }
+</script>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="certifications.css">
+
+
+<!-- Particles -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+</head>
+
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white font-[Poppins] transition duration-500">
+
+<div id="particles-js"></div>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="fixed w-full bg-white/70 dark:bg-black/50 backdrop-blur-md z-50">
+  <div class="container mx-auto flex justify-between items-center p-4">
+
+    <h1 class="text-2xl font-bold text-cyan-500">Murali Sai</h1>
+
+    <ul class="hidden md:flex space-x-8">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achivements">Achivements</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center space-x-4">
+      
+      <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-gray-200 dark:bg-gray-900 p-5 space-y-4">
+    <a href="#skills" class="block">Skills</a>
+    <a href="#experience" class="block">Experience</a>
+    <a href="#education" class="block">Education</a>
+    <a href="#achivements" class="block">Achivements</a>
+    <a href="#projects" class="block">Projects</a>
+    <a href="#certifications" class="block">Certifications</a>
+    <a href="#contact" class="block">Contact</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="min-h-screen flex items-center justify-center px-6 relative">
+
+  <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+    <!-- LEFT – ABOUT CARD -->
+    <div class="glass-card">
+
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+        Hi, I'm 
+        <span class="gradient-text">Murali Sai</span>
+      </h1>
+
+      <h3 class="text-xl mt-4 font-medium text-cyan-400">
+        <span id="typing"></span>
+      </h3>
+
+      <p class="mt-6 leading-7">
+        Packaged App Development Analyst at Accenture with strong expertise in 
+        Oracle Procurement Cloud, SQL, AWS, and business operations in supply chain. 
+        Passionate about converting ideas into ventures and Skilled in Agentic AI
+        focused on delivering measurable strategic impact through technology.
+      </p>
+
+      <div class="mt-8 flex space-x-4">
+        <a href="resume.pdf" download
+           class="bg-cyan-500 px-6 py-3 rounded-full text-white hover:scale-105 transition">
+           Download Resume
+        </a>
+
+        <a href="#contact"
+           class="border border-cyan-500 px-6 py-3 rounded-full hover:bg-cyan-500 hover:text-white transition">
+           Contact Me
+        </a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT – IMAGE -->
+    <div class="flex justify-center perspective">
+      <div class="hero-wrapper floating tilt">
+        <img src="images/p-1.jpeg" class="hero-img" alt="Murali Sai">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- EXPERIENCE SECTION -->
+<section id="experience" class="py-16 bg-gray-50 dark:bg-gray-900">
+
+  <div class="max-w-6xl mx-auto px-6">
+    
+    <h2 class="section-title">Professional Experience</h2>
+      Professional Experience
+    </h2>
+
+    <!-- Accenture -->
+    <div class="flex flex-col md:flex-row items-start gap-6 mb-12 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+      
+      <!-- Logo -->
+      <div class="w-20 h-20 flex-shrink-0">
+        <img src="images/accen.jpg" alt="Accenture Logo" class="w-full h-full object-contain">
+      </div>
+
+      <!-- Content -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">
+          Packaged App Development Analyst – Accenture
+        </h3>
+        <p class="text-sm text-gray-500 mb-4">Feb 2024 – Present</p>
+
+        <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+          <li>Delivered end-to-end procurement operations within Oracle ERP Cloud.</li>
+          <li>Improved supply chain visibility and procurement efficiency by 25%.</li>
+          <li>Performed vendor analysis and spend tracking using SQL & Excel.</li>
+          <li>Built KPI dashboards to analyze supplier performance.</li>
+          <li>Promoted to Analyst for consistent technical excellence.</li>
+          <li>Completed 70+ professional courses in AI, Cloud, DevOps, and Agile.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ISRO Internship -->
+    <div class="flex flex-col md:flex-row items-start gap-6 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+      
+      <!-- Logo -->
+      <div class="w-20 h-20 flex-shrink-0">
+        <img src="images/isro.png" alt="ISRO Logo" class="w-full h-full object-contain">
+      </div>
+
+      <!-- Content -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">
+          Project Intern – ISRO
+        </h3>
+        <p class="text-sm text-gray-500 mb-4">Jun 2023 – Nov 2023</p>
+
+        <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+          <li>Developed Python GUI automation system for servo control calculations.</li>
+          <li>Built secure inventory management web app using HTML, PHP & MySQL.</li>
+          <li>Implemented PID controller and simulated system using MATLAB & PPMAC.</li>
+          <li>Delivered 3 concurrent projects within 6 months.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="section reveal bg-gray-100 dark:bg-gray-900">
+
+<h2 class="section-title">Technical Skills</h2>
+
+<div class="skills-grid">
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+    <p>Python</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+    <p>JavaScript</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="images/gen-ai.jpg" alt="gen-ai">
+    <p>Gen-AI</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="images/agentic-ai.jpeg" alt="CSS3">
+    <p>Agentic AI</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+    <p>Java</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+    <p>SQL</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS">
+    <p>AWS</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure">
+    <p>Azure</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+    <p>Git</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+    <p>Docker</p>
+  </div>
+
+  <div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle Cloud">
+    <p>Oracle Cloud</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education" class="section reveal">
+  <h2 class="section-title">Education</h2>
+  <div class="education-container">
+    
+    <div class="education-card">
+      <div class="education-content">
+        <img src="images/e-1.png" alt="SREE VIDYANIKETHAN" class="education-logo">
+        <div class="education-info">
+          <div class="education-header">
+            <h3>Bachelor of Technology in Electronics & Communication Engineering</h3>
+            <span class="education-period">2019 - 2023</span>
+          </div>
+          <p class="education-institution">SREE VIDYANIKETHAN ENGINEERING COLLEGE</p>
+        </div>
+      </div>
+    </div> 
+</section>
+
+<!-- ACHIEVEMENTS SECTION -->
+<section id="achivements" class="section reveal">
+
+  <h2 class="section-title">Achievements</h2>
+
+  <div class="ach-container">
+
+    <div class="ach-card">
+      <img src="images/achi-1.jpeg" alt="Promotion">
+      <div class="ach-content">
+        <h3>IPR Patent</h3>
+        <p>Storage system by using NANO Composites</p>
+      </div>
+    </div>
+
+    <div class="ach-card">
+      <img src="images/achi-2.jpeg" alt="ISRO Project">
+      <div class="ach-content">
+        <h3>Student Innovation Award</h3>
+        <p>By Contributing in Research and Innovation </p>
+      </div>
+    </div>
+
+    <div class="ach-card">
+      <img src="images/achi-3.jpeg" alt="70+ Courses">
+      <div class="ach-content">
+        <h3>Patent Presentation to IIT board Directors</h3>
+        <!--<p>Attended the “Innovation: An Ecosystem to Realize Your Dreams” workshop conducted by the state government. </p> -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects" class="section reveal">
+  <h2 class="section-title">Projects</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    
+    <div class="project tilt-card">
+      <img src="images/i-1.png" alt="Green Energy Generation">
+      <h3 class="text-lg font-semibold">Green Energy Generation</h3>
+      <p class="text-sm mt-2">
+        Designed a renewable energy solution using piezoelectric materials to generate power during jungle operations. Focused on sustainable soldier support systems and field efficiency.
+      </p>
+    </div>
+    
+    <div class="project tilt-card">
+      <img src="images/ff-99.jpg" alt="RFID Double Security">
+      <h3 class="text-lg font-semibold">RFID Double Security</h3>
+      <p class="text-sm mt-2">
+        Enhanced RFID authentication mechanisms with layered validation. Improved system reliability and minimized unauthorized access risks for secure tracking environments.
+      </p>
+    </div>
+    
+    <div class="project tilt-card">
+      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" alt="Defluorination of Water">
+      <h3 class="text-lg font-semibold">Defluorination of Water</h3>
+      <p class="text-sm mt-2">
+        Conducted environmental remediation research using Tulsi leaves to remove fluoride contamination. Achieved sustainable purification results with low-cost biological treatment methods.
+      </p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Certifications Section -->
+  <!-- Certifications Section -->
+<section id="certifications" class="section reveal bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+
+      <!-- Oracle Procurement -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center gap-4">
+          <img src="images/oraclelogo.jpeg" alt="Oracle Logo" class="w-14 h-14 object-contain">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+              Oracle Fusion Cloud Procurement 2024 Certified Implementation Professional
+            </h3>
+            <p class="text-sm text-gray-500">Oracle • Issued Nov 2024 </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oracle Foundations -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center gap-4">
+          <img src="images/oraclelogo.jpeg" alt="Oracle Logo" class="w-14 h-14 object-contain">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+              Oracle Cloud Certified Foundations Associate
+            </h3>
+            <p class="text-sm text-gray-500">Oracle • Issued Nov 2024 </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Microsoft Azure -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center gap-4">
+          <img src="images/azure.png" alt="Microsoft Logo" class="w-14 h-14 object-contain">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+              Microsoft Certified: Azure Fundamentals
+            </h3>
+            <p class="text-sm text-gray-500">Microsoft • Issued May 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AWS -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center gap-4">
+          <img src="images/aws.png" alt="AWS Logo" class="w-14 h-14 object-contain">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+              AWS Academy Cloud Foundations
+            </h3>
+            <p class="text-sm text-gray-500">AWS Academy • Issued Aug 2022</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salesforce -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center gap-4">
+          <img src="images/salesforce.png" alt="Salesforce Logo" class="w-14 h-14 object-contain">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+              Salesforce Intern Certification
+            </h3>
+            <p class="text-sm text-gray-500">Salesforce • Issued Jul 2022</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="section reveal">
+  <h2 class="section-title">Contact</h2>
+  
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <h3>Email</h3>
+        <a href="mailto:malarapumuralisai@gmail.com">malarapumura<br>lisai@gmail.com</a>
+      </div>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">🔗</div>
+      <div>
+        <h3>LinkedIn</h3>
+        <a href="https://www.linkedin.com/in/murali-sai-m-735404247/" target="_blank" rel="noopener noreferrer">View Profile</a>
+      </div>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div>
+        <h3>Location</h3>
+        <p>Andhra Pradesh, India</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="contact-cta">
+    <p>Open to collaborations and new opportunities.</p>
+    <a href="mailto:mallarapumuralisai@gmail.com" class="contact-btn">Let's Connect</a>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
