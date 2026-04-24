@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
 const roles = [
   "Procurement Analyst",
   "Oracle Cloud Specialist",
-  "Masters in Innovation Management",
+  "Masters in Engineering Management",
   "AI & Data Enthusiast"
 ];
 
