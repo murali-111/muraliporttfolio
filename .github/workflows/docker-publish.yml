@@ -33,9 +33,60 @@ jobs:
 
       # Login to Azure
       - name: Azure Login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+        env:
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "$AZURE_CREDENTIALS" ]; then
+            echo "$AZURE_CREDENTIALS" > /tmp/azure-creds.json
+            CLIENT_ID=$(python - <<'PY'
+import json
+with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
+    data = json.load(fh)
+print(data.get('clientId', ''))
+PY
+)
+            TENANT_ID=$(python - <<'PY'
+import json
+with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
+    data = json.load(fh)
+print(data.get('tenantId', ''))
+PY
+)
+            CLIENT_SECRET=$(python - <<'PY'
+import json
+with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
+    data = json.load(fh)
+print(data.get('clientSecret', ''))
+PY
+)
+            SUBSCRIPTION_ID=$(python - <<'PY'
+import json
+with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
+    data = json.load(fh)
+print(data.get('subscriptionId', ''))
+PY
+)
+          else
+            CLIENT_ID="${AZURE_CLIENT_ID:-}"
+            TENANT_ID="${AZURE_TENANT_ID:-}"
+            CLIENT_SECRET="${AZURE_CLIENT_SECRET:-}"
+            SUBSCRIPTION_ID="${AZURE_SUBSCRIPTION_ID:-}"
+          fi
+
+          if [ -z "$CLIENT_ID" ] || [ -z "$TENANT_ID" ] || [ -z "$CLIENT_SECRET" ] || [ -z "$SUBSCRIPTION_ID" ]; then
+            echo "::error::Missing Azure credentials. Set either AZURE_CREDENTIALS or the individual Azure service principal secrets."
+            exit 1
+          fi
+
+          az login --service-principal --username "$CLIENT_ID" --password "$CLIENT_SECRET" --tenant "$TENANT_ID" --allow-no-subscriptions
+          az account set --subscription "$SUBSCRIPTION_ID"
+          az account show --output table
 
       # Install kubelogin for AKS AAD auth
       - name: Install kubelogin
