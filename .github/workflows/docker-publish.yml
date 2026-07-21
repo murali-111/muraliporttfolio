@@ -44,34 +44,10 @@ jobs:
 
           if [ -n "$AZURE_CREDENTIALS" ]; then
             echo "$AZURE_CREDENTIALS" > /tmp/azure-creds.json
-            CLIENT_ID=$(python - <<'PY'
-import json
-with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
-    data = json.load(fh)
-print(data.get('clientId', ''))
-PY
-)
-            TENANT_ID=$(python - <<'PY'
-import json
-with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
-    data = json.load(fh)
-print(data.get('tenantId', ''))
-PY
-)
-            CLIENT_SECRET=$(python - <<'PY'
-import json
-with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
-    data = json.load(fh)
-print(data.get('clientSecret', ''))
-PY
-)
-            SUBSCRIPTION_ID=$(python - <<'PY'
-import json
-with open('/tmp/azure-creds.json', 'r', encoding='utf-8') as fh:
-    data = json.load(fh)
-print(data.get('subscriptionId', ''))
-PY
-)
+            CLIENT_ID=$(python -c "import json; print(json.load(open('/tmp/azure-creds.json'))['clientId'])")
+            TENANT_ID=$(python -c "import json; print(json.load(open('/tmp/azure-creds.json'))['tenantId'])")
+            CLIENT_SECRET=$(python -c "import json; print(json.load(open('/tmp/azure-creds.json'))['clientSecret'])")
+            SUBSCRIPTION_ID=$(python -c "import json; print(json.load(open('/tmp/azure-creds.json'))['subscriptionId'])")
           else
             CLIENT_ID="${AZURE_CLIENT_ID:-}"
             TENANT_ID="${AZURE_TENANT_ID:-}"
