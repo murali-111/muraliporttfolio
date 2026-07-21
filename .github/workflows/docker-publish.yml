@@ -80,10 +80,12 @@ jobs:
 
       # Connect to AKS
       - name: Set AKS Context
-        uses: azure/aks-set-context@v4
-        with:
-          resource-group: ${{ secrets.AKS_RESOURCE_GROUP }}
-          cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
+        env:
+          AKS_RESOURCE_GROUP: ${{ secrets.AKS_RESOURCE_GROUP }}
+          AKS_CLUSTER_NAME: ${{ secrets.AKS_CLUSTER_NAME }}
+        run: |
+          set -euo pipefail
+          az aks get-credentials --resource-group "$AKS_RESOURCE_GROUP" --name "$AKS_CLUSTER_NAME" --overwrite-existing
 
       # Deploy to AKS
       - name: Deploy Application
