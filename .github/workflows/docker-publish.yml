@@ -37,10 +37,10 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Install kubelogin
-        uses: azure/use-kubelogin@v1
-        with:
-          kubelogin-version: 'latest'
+      # - name: Install kubelogin
+      #   uses: azure/use-kubelogin@v1
+      #   with:
+      #     kubelogin-version: 'latest'
 
       # Connect to AKS
       - name: Set AKS Context
@@ -48,6 +48,7 @@ jobs:
         with:
           resource-group: ${{ secrets.AKS_RESOURCE_GROUP }}
           cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
+          admin: true
 
       # Deploy to AKS
       - name: Deploy Application
