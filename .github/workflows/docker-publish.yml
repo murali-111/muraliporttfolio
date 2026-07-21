@@ -46,8 +46,9 @@ jobs:
           rm -rf /tmp/kubelogin
           mkdir -p /tmp/kubelogin
           unzip /tmp/kubelogin.zip -d /tmp/kubelogin
-          sudo install -m 0755 /tmp/kubelogin/bin/linux_amd64/kubelogin /usr/local/bin/kubelogin
-          chmod +x /usr/local/bin/kubelogin
+          mkdir -p "$HOME/.local/bin"
+          install -m 0755 /tmp/kubelogin/bin/linux_amd64/kubelogin "$HOME/.local/bin/kubelogin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           kubelogin --version
 
       # Connect to AKS
