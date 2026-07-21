@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: muraliportfolio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: muraliportfolio
+  template:
+    metadata:
+      labels:
+        app: muraliportfolio
+    spec:
+      containers:
+      - name: muraliportfolio
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/muraliportfolio:latest
+        ports:
+        - containerPort: 80
