@@ -47,8 +47,8 @@ jobs:
       # Deploy to AKS
       - name: Deploy Application
         run: |
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
+          kubectl apply -f K8s/deployment.yaml
+          kubectl apply -f K8s/service.yaml
 
       # Restart Deployment
       - name: Restart Deployment
@@ -61,4 +61,3 @@ jobs:
           kubectl get pods
           kubectl get svc
 
-          
