@@ -64,6 +64,44 @@ jobs:
           az account set --subscription "$SUBSCRIPTION_ID"
           az account show --output table
 
+      # Grant the service principal access to this AKS cluster
+      - name: Grant AKS access
+        env:
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AKS_RESOURCE_GROUP: ${{ secrets.AKS_RESOURCE_GROUP }}
+          AKS_CLUSTER_NAME: ${{ secrets.AKS_CLUSTER_NAME }}
+        run: |
+          set -euo pipefail
+
+          if [ -f /tmp/azure-creds.json ]; then
+            CLIENT_ID=$(python -c "import json; print(json.load(open('/tmp/azure-creds.json'))['clientId'])")
+          else
+            CLIENT_ID="${AZURE_CLIENT_ID:-}"
+          fi
+
+          if [ -z "$CLIENT_ID" ]; then
+            echo "::error::Unable to determine Azure client id for AKS access assignment."
+            exit 1
+          fi
+
+          SP_OBJECT_ID=$(az ad sp show --id "$CLIENT_ID" --query id -o tsv)
+          CLUSTER_ID=$(az aks show --resource-group "$AKS_RESOURCE_GROUP" --name "$AKS_CLUSTER_NAME" --query id -o tsv)
+
+          if [ -z "$SP_OBJECT_ID" ] || [ -z "$CLUSTER_ID" ]; then
+            echo "::error::Unable to resolve the service principal or AKS cluster id."
+            exit 1
+          fi
+
+          az role assignment create \
+            --assignee-object-id "$SP_OBJECT_ID" \
+            --assignee-principal-type ServicePrincipal \
+            --role "Azure Kubernetes Service Cluster Admin Role" \
+            --scope "$CLUSTER_ID" \
+            --only-show-errors || true
+
+          sleep 30
+
       # Install kubelogin for AKS AAD auth
       - name: Install kubelogin
         run: |
