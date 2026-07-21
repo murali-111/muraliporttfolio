@@ -37,10 +37,16 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # - name: Install kubelogin
-      #   uses: azure/use-kubelogin@v1
-      #   with:
-      #     kubelogin-version: 'latest'
+      # Install kubelogin for AKS AAD auth
+      - name: Install kubelogin
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gettext-base unzip
+          curl -L https://github.com/Azure/kubelogin/releases/download/v0.1.7/kubelogin-linux-amd64.zip -o /tmp/kubelogin.zip
+          unzip /tmp/kubelogin.zip -d /tmp/kubelogin
+          sudo install /tmp/kubelogin/kubelogin /usr/local/bin/kubelogin
+          chmod +x /usr/local/bin/kubelogin
+          kubelogin --version
 
       # Connect to AKS
       - name: Set AKS Context
@@ -48,12 +54,14 @@ jobs:
         with:
           resource-group: ${{ secrets.AKS_RESOURCE_GROUP }}
           cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
-          admin: true
 
       # Deploy to AKS
       - name: Deploy Application
+        env:
+          DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/muraliportfolio:latest
         run: |
-          kubectl apply -f K8s/deployment.yaml
+          envsubst < K8s/deployment.yaml > /tmp/deployment.yaml
+          kubectl apply -f /tmp/deployment.yaml
           kubectl apply -f K8s/service.yaml
 
       # Restart Deployment
